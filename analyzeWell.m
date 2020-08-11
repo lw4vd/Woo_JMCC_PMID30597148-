@@ -1,4 +1,4 @@
-function [nucData,cellData] = analyzeWell(wellNum,channels,segThresholdLevel,localMaximaThreshold,minCellArea,maxCellArea)
+function [nucData,cellData] = analyzeWell(wellNum,channels,segThresholdLevel,minCellArea,maxCellArea)
 % analyzeWell.m
 % Called by 'Master.m' to analyze images in a particular well.
 % History:
@@ -24,7 +24,7 @@ end
 
 %% Segment objects in the first channel
 disp('segmenting...'); tic
-[segmentedImageNuc,segmentedImageCell] = segmentObjects(images{1},segThresholdLevel,localMaximaThreshold,minCellArea,maxCellArea); toc
+[segmentedImageNuc,segmentedImageCell] = segmentObjects(images{1},segThresholdLevel,minCellArea,maxCellArea); toc
 
 % TEMP
 assignin('base','segmentedImagesNuc',segmentedImageNuc);
