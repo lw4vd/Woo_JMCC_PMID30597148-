@@ -16,8 +16,7 @@ wells = [1:1]; % range of wells to analyze
 channels = [1:1]; % range of channels to analyze
 
 % segmentation parameters
-segThresholdLevel = 1.5; % # of std deviations for object/background thresholding (1.5 is 93.32% of noise)
-localMaximaThreshold = 0.1; % size of local maxima for dividing clumped objects (range 0-1, 0.2 is typical, 0.1 more aggressive)
+segThresholdLevel = 1; % # of std deviations for object/background thresholding (1.5 is 93.32% of noise)
 minCellArea = 100;
 maxCellArea = 2500;
 
@@ -27,7 +26,7 @@ for i=1:numel(wells)
     wellNum = wells(i);
     disp(['processing well ' num2str(wells(i))]);
     
-    [nucData,cellData] = analyzeWell(wellNum,channels,segThresholdLevel,localMaximaThreshold,minCellArea,maxCellArea);
+    [nucData,cellData] = analyzeWell(wellNum,channels,segThresholdLevel,minCellArea,maxCellArea);
 
     savefile = sprintf('nucOutput_well%0.2d',wellNum); % save data for nuclei analysis
     save([savefile],'nucData');
